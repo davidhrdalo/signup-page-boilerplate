@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { createClient } from '@/supabase/server';
 import { cookies } from 'next/headers';
 import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
+import SignupDialog from '@/components/comps/SignupDialog';
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -33,10 +34,12 @@ export default async function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <SignupDialog>
+                  <Button size="lg" className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </SignupDialog>
                 <Button variant="outline" size="lg">
                   Live Demo
                 </Button>

@@ -1,9 +1,16 @@
+import { Metadata } from "next";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description: "Find answers to commonly asked questions about our beta program.",
+  keywords: ["faq", "help", "questions", "support"],
+};
 
 const faqs = [
   {

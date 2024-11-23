@@ -1,3 +1,11 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Learn how we collect, use, and protect your personal information.",
+  keywords: ["privacy", "data protection", "security", "privacy policy"],
+};
+
 export default function PrivacyPage() {
   const lastUpdated = "February 23, 2024";
 

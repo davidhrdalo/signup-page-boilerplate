@@ -1,7 +1,14 @@
+import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageSquare, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with our team. We'd love to hear from you.",
+  keywords: ["contact", "support", "help", "inquiries"],
+};
 
 const contactMethods = [
   {

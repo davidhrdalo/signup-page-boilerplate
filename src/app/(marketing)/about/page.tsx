@@ -1,4 +1,11 @@
+import { Metadata } from 'next';
 import { Rocket, Users, Stars, ArrowUpRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about our mission, team, and the future we're building.",
+  keywords: ["about", "team", "mission", "company"],
+};
 
 export default function AboutPage() {
   return (

@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import SignupDialog from '@/components/comps/SignupDialog';
-import { ModeToggle } from '@/components/comps/ModeToggle'; // Adjust this import path as needed
+import SignupDialog from '@/components/layout/SignupDialog';
+import { ModeToggle } from '@/components/layout/ModeToggle'; // Adjust this import path as needed
 
 export default function Header() {
   return (

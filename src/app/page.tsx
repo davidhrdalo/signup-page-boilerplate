@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { createClient } from '@/supabase/server';
 import { cookies } from 'next/headers';
 import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
-import SignupDialog from '@/components/comps/SignupDialog';
+import SignupDialog from '@/components/layout/SignupDialog';
 
 export const metadata: Metadata = {
   title: "Join the Beta", // Will be "Join the Beta | Your Product Name"

@@ -6,6 +6,11 @@ import { Input } from '@/components/ui/input';
 import { createClient } from '@/supabase/client';
 import { Loader2, Check } from 'lucide-react';
 
+interface BetaSignup {
+  email: string;
+  product: string;
+}
+
 export default function SignupForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -17,16 +22,18 @@ export default function SignupForm() {
     setStatus('loading');
     setError('');
 
+    const signup: BetaSignup = {
+      email,
+      product: 'my-product' // Change this for different products
+    };
+
     try {
       const { error: supabaseError } = await supabase
         .from('beta_signups')
-        .insert([{ 
-          email, 
-          product: 'my-product' // Change this for different products
-        }]);
+        .insert([signup]);
 
       if (supabaseError) throw supabaseError;
-
+      
       setStatus('success');
       setEmail('');
     } catch (err: any) {
@@ -40,14 +47,16 @@ export default function SignupForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-lg bg-green-50 p-6 text-center">
+      <div className="rounded-lg bg-green-50 dark:bg-green-900/20 p-6 text-center">
         <div className="mb-4 flex justify-center">
-          <div className="rounded-full bg-green-100 p-2">
-            <Check className="h-6 w-6 text-green-600" />
+          <div className="rounded-full bg-green-100 dark:bg-green-900/50 p-2">
+            <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
           </div>
         </div>
-        <h3 className="text-lg font-medium text-green-800">You're on the list!</h3>
-        <p className="mt-2 text-sm text-green-700">
+        <h3 className="text-lg font-medium text-green-800 dark:text-green-300">
+          You're on the list!
+        </h3>
+        <p className="mt-2 text-sm text-green-700 dark:text-green-400">
           We'll be in touch soon with next steps.
         </p>
       </div>
@@ -58,9 +67,9 @@ export default function SignupForm() {
     <div className="w-full max-w-md">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label 
-            htmlFor="email" 
-            className="block text-sm font-medium text-gray-700 mb-1"
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
           >
             Email address
           </label>
@@ -73,11 +82,18 @@ export default function SignupForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading'}
-              className={error ? 'border-red-300' : ''}
+              className={`
+                dark:bg-gray-800 
+                dark:border-gray-700 
+                dark:placeholder:text-gray-500 
+                ${error ? 'border-red-300 dark:border-red-700' : ''}
+              `}
             />
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={status === 'loading'}
+              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 
+                dark:from-violet-500 dark:to-indigo-500 dark:hover:from-violet-600 dark:hover:to-indigo-600"
             >
               {status === 'loading' ? (
                 <>
@@ -90,7 +106,7 @@ export default function SignupForm() {
             </Button>
           </div>
           {error && (
-            <p className="mt-2 text-sm text-red-600">{error}</p>
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400">{error}</p>
           )}
         </div>
       </form>

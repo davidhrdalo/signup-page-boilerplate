@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageSquare, Clock } from "lucide-react";
+import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -64,64 +62,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-900/30 rounded-xl p-6 sm:p-8 border border-gray-100 dark:border-gray-800">
-            <h2 className="text-xl font-semibold mb-6 dark:text-white">Send us a message</h2>
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Name
-                  </label>
-                  <Input 
-                    id="name" 
-                    placeholder="John Doe" 
-                    required 
-                    className="dark:bg-gray-800 dark:border-gray-700 dark:placeholder:text-gray-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Email
-                  </label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="john@example.com" 
-                    required 
-                    className="dark:bg-gray-800 dark:border-gray-700 dark:placeholder:text-gray-500"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Subject
-                </label>
-                <Input 
-                  id="subject" 
-                  placeholder="How can we help?" 
-                  required 
-                  className="dark:bg-gray-800 dark:border-gray-700 dark:placeholder:text-gray-500"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Tell us more about your inquiry..."
-                  className="min-h-[120px] dark:bg-gray-800 dark:border-gray-700 dark:placeholder:text-gray-500"
-                  required
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 dark:from-violet-500 dark:to-indigo-500 dark:hover:from-violet-600 dark:hover:to-indigo-600"
-              >
-                Send Message
-              </Button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </div>

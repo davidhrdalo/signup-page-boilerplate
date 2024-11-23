@@ -16,9 +16,9 @@ export default function SignupDialog({ children }: { children: React.ReactNode }
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
         <DialogHeader>
-          <DialogTitle>Join the Beta</DialogTitle>
+          <DialogTitle className="text-gray-900 dark:text-white">Join the Beta</DialogTitle>
         </DialogHeader>
         <div className="py-4">
           <SignupForm />

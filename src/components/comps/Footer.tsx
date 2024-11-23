@@ -9,6 +9,9 @@ export default function Footer() {
         <nav className="flex flex-col items-center justify-center space-y-8">
           {/* Main Links */}
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+            <Link href="/" className="text-sm text-gray-600 hover:text-gray-900">
+              Home
+            </Link>
             <Link href="/about" className="text-sm text-gray-600 hover:text-gray-900">
               About
             </Link>

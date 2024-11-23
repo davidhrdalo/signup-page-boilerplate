@@ -10,7 +10,7 @@ export default async function Home() {
   const supabase = createClient(cookieStore);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-white dark:from-violet-950 dark:via-gray-950 dark:to-gray-950">
+    <div className="bg-gradient-to-b from-violet-50 via-white to-white dark:from-violet-950 dark:via-gray-950 dark:to-gray-950">
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-24 pb-16">
         <div className="max-w-6xl mx-auto">

@@ -7,9 +7,12 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description: "Find answers to commonly asked questions about our beta program.",
-  keywords: ["faq", "help", "questions", "support"],
+  title: 'FAQ',
+  description: 'Find answers to commonly asked questions about our platform.',
+  openGraph: {
+    title: 'Frequently Asked Questions',
+    description: 'Find answers to commonly asked questions about our platform.',
+  },
 };
 
 const faqs = [

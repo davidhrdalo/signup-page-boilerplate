@@ -1,11 +1,14 @@
-import { Metadata } from 'next';
-import Image from 'next/image';
-import { Rocket, Users, Stars, ArrowUpRight } from 'lucide-react';
+import { Metadata } from "next";
+import Image from "next/image";
+import { Rocket, Users, Stars, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about our mission, team, and the future we're building.",
-  keywords: ["about", "team", "mission", "company"],
+  title: 'About Us',
+  description: 'Learn about our mission, team, and the future we\'re building.',
+  openGraph: {
+    title: 'About Us',
+    description: 'Learn about our mission, team, and the future we\'re building.',
+  },
 };
 
 export default function AboutPage() {
@@ -15,57 +18,76 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6 text-gray-900 dark:text-white">
-            Building the Future of{' '}
+            Building the Future of{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">
               Product Development
             </span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            We&apos;re on a mission to empower creators and developers with tools that make building products faster, easier, and more enjoyable.
+            We&apos;re on a mission to empower creators and developers with
+            tools that make building products faster, easier, and more
+            enjoyable.
           </p>
         </div>
 
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-20">
           {[
-            { label: 'Early Users', value: '1,000+' },
-            { label: 'Countries', value: '50+' },
-            { label: 'Beta Signups', value: '5,000+' }
+            { label: "Early Users", value: "1,000+" },
+            { label: "Countries", value: "50+" },
+            { label: "Beta Signups", value: "5,000+" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                {stat.value}
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
 
         {/* Values Section */}
         <div className="max-w-5xl mx-auto mb-20">
-          <h2 className="text-2xl font-semibold text-center mb-12 dark:text-white">Our Values</h2>
+          <h2 className="text-2xl font-semibold text-center mb-12 dark:text-white">
+            Our Values
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Rocket className="w-6 h-6 text-violet-600 dark:text-violet-400" />,
+                icon: (
+                  <Rocket className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                ),
                 title: "Move Fast",
-                description: "We believe in rapid iteration and continuous improvement"
+                description:
+                  "We believe in rapid iteration and continuous improvement",
               },
               {
-                icon: <Users className="w-6 h-6 text-violet-600 dark:text-violet-400" />,
+                icon: (
+                  <Users className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                ),
                 title: "User First",
-                description: "Everything we build starts with user needs"
+                description: "Everything we build starts with user needs",
               },
               {
-                icon: <Stars className="w-6 h-6 text-violet-600 dark:text-violet-400" />,
+                icon: (
+                  <Stars className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                ),
                 title: "Excellence",
-                description: "Quality is not an act, it's a habit"
-              }
+                description: "Quality is not an act, it's a habit",
+              },
             ].map((value, index) => (
               <div key={index} className="text-center p-6">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-violet-100 dark:bg-violet-900/50 mb-4">
                   {value.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 dark:text-white">{value.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{value.description}</p>
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">
+                  {value.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>
@@ -73,34 +95,38 @@ export default function AboutPage() {
 
         {/* Team Section */}
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-semibold text-center mb-12 dark:text-white">Meet the Team</h2>
+          <h2 className="text-2xl font-semibold text-center mb-12 dark:text-white">
+            Meet the Team
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 name: "Sarah Chen",
                 role: "Founder & CEO",
-                image: "/api/placeholder/300/300"
+                image: "/api/placeholder/300/300",
               },
               {
                 name: "Alex Rodriguez",
                 role: "Head of Engineering",
-                image: "/api/placeholder/300/300"
+                image: "/api/placeholder/300/300",
               },
               {
                 name: "Maya Patel",
                 role: "Head of Product",
-                image: "/api/placeholder/300/300"
-              }
+                image: "/api/placeholder/300/300",
+              },
             ].map((member, index) => (
               <div key={index} className="text-center">
-               <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="rounded-full object-cover bg-gray-100 dark:bg-gray-800"
-                  priority={index < 3} // Prioritize loading for first 3 team members
-                />
+                <div className="relative w-32 h-32 mx-auto mb-4">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={128}
+                    height={128}
+                    className="rounded-full object-cover bg-gray-100 dark:bg-gray-800"
+                    priority={index < 3}
+                  />
+                </div>
                 <h3 className="text-lg font-semibold dark:text-white">{member.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{member.role}</p>
               </div>
@@ -115,9 +141,10 @@ export default function AboutPage() {
               Join Us on Our Journey
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              We&apos;re looking for passionate people to join our beta and help shape the future of our product.
+              We&apos;re looking for passionate people to join our beta and help
+              shape the future of our product.
             </p>
-            <a 
+            <a
               href="/"
               className="inline-flex items-center text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300 font-medium transition-colors"
             >

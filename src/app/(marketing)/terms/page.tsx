@@ -1,9 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Read our terms of service and conditions for using our platform.",
-  keywords: ["terms", "conditions", "legal", "terms of service"],
+  title: 'Terms of Service',
+  description: 'Read our terms of service and usage conditions.',
+  robots: {
+    index: true,
+    follow: false,
+  },
 };
 
 export default function TermsPage() {

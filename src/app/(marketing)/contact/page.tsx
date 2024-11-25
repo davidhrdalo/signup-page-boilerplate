@@ -3,9 +3,12 @@ import { Mail, MessageSquare, Clock } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with our team. We'd love to hear from you.",
-  keywords: ["contact", "support", "help", "inquiries"],
+  title: 'Contact Us',
+  description: 'Get in touch with our team for support or inquiries.',
+  openGraph: {
+    title: 'Contact Us',
+    description: 'Get in touch with our team for support or inquiries.',
+  },
 };
 
 const contactMethods = [

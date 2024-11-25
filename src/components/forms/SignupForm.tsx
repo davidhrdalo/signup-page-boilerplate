@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createClient } from '@/supabase/client';
 import { Loader2, Check } from 'lucide-react';
+import { PostgrestError } from '@supabase/supabase-js';
 
 interface BetaSignup {
   email: string;
@@ -16,6 +17,17 @@ export default function SignupForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
   const supabase = createClient();
+
+  // Type guard for PostgrestError
+  function isPostgrestError(error: unknown): error is PostgrestError {
+    return (
+      typeof error === 'object' &&
+      error !== null &&
+      'message' in error &&
+      typeof (error as PostgrestError).message === 'string' &&
+      'code' in error
+    );
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,15 +45,18 @@ export default function SignupForm() {
         .insert([signup]);
 
       if (supabaseError) throw supabaseError;
-      
+
       setStatus('success');
       setEmail('');
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setError(err.code === '23505' ? 
-        'You\'re already signed up!' : 
-        'Something went wrong. Please try again.'
-      );
+      if (isPostgrestError(err) && err.code === '23505') {
+        setError('You\'re already signed up!');
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
     }
   };
 
@@ -54,10 +69,10 @@ export default function SignupForm() {
           </div>
         </div>
         <h3 className="text-lg font-medium text-green-800 dark:text-green-300">
-          You're on the list!
+          You&apos;re on the list!
         </h3>
         <p className="mt-2 text-sm text-green-700 dark:text-green-400">
-          We'll be in touch soon with next steps.
+          We&apos;ll be in touch soon with next steps.
         </p>
       </div>
     );
@@ -83,16 +98,16 @@ export default function SignupForm() {
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading'}
               className={`
-                dark:bg-gray-800 
-                dark:border-gray-700 
-                dark:placeholder:text-gray-500 
+                dark:bg-gray-800
+                dark:border-gray-700
+                dark:placeholder:text-gray-500
                 ${error ? 'border-red-300 dark:border-red-700' : ''}
               `}
             />
             <Button
               type="submit"
               disabled={status === 'loading'}
-              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 
+              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700
                 dark:from-violet-500 dark:to-indigo-500 dark:hover:from-violet-600 dark:hover:to-indigo-600"
             >
               {status === 'loading' ? (

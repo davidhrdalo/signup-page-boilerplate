@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { Rocket, Users, Stars, ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            We're on a mission to empower creators and developers with tools that make building products faster, easier, and more enjoyable.
+            We&apos;re on a mission to empower creators and developers with tools that make building products faster, easier, and more enjoyable.
           </p>
         </div>
 
@@ -92,10 +93,13 @@ export default function AboutPage() {
               }
             ].map((member, index) => (
               <div key={index} className="text-center">
-                <img
+               <Image
                   src={member.image}
                   alt={member.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 bg-gray-100 dark:bg-gray-800"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="rounded-full object-cover bg-gray-100 dark:bg-gray-800"
+                  priority={index < 3} // Prioritize loading for first 3 team members
                 />
                 <h3 className="text-lg font-semibold dark:text-white">{member.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{member.role}</p>
@@ -111,7 +115,7 @@ export default function AboutPage() {
               Join Us on Our Journey
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              We're looking for passionate people to join our beta and help shape the future of our product.
+              We&apos;re looking for passionate people to join our beta and help shape the future of our product.
             </p>
             <a 
               href="/"

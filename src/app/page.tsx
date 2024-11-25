@@ -1,8 +1,5 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { createClient } from '@/supabase/server';
-import { cookies } from 'next/headers';
 import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 import SignupDialog from '@/components/layout/SignupDialog';
 
@@ -13,8 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
 
   return (
     <div className="bg-gradient-to-b from-violet-50 via-white to-white dark:from-violet-950 dark:via-gray-950 dark:to-gray-950">

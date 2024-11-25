@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Check } from 'lucide-react';
 import { createClient } from '@/supabase/client';
+import { PostgrestError } from '@supabase/supabase-js';
 
 interface ContactFormData {
   product: string;
@@ -65,11 +66,26 @@ export default function ContactForm() {
 
       setStatus('success');
       setFormData(initialFormData);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setError(err.message || 'Something went wrong. Please try again.');
+      // Type guard to handle different types of errors
+      if (err instanceof Error || isPostgrestError(err)) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
     }
   };
+
+  // Type guard for PostgrestError
+  function isPostgrestError(error: unknown): error is PostgrestError {
+    return (
+      typeof error === 'object' &&
+      error !== null &&
+      'message' in error &&
+      typeof (error as PostgrestError).message === 'string'
+    );
+  }
 
   if (status === 'success') {
     return (
@@ -83,7 +99,7 @@ export default function ContactForm() {
           Message sent successfully!
         </h3>
         <p className="mt-2 text-sm text-green-700 dark:text-green-400">
-          We'll get back to you within 24 hours.
+          We&apos;ll get back to you within 24 hours.
         </p>
       </div>
     );

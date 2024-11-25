@@ -85,7 +85,7 @@ export default function FAQPage() {
             <div className="text-center">
               <h2 className="text-2xl font-semibold mb-4 dark:text-white">Still have questions?</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Can't find the answer you're looking for? Feel free to reach out to our team.
+                Can&apos;t find the answer you&apos;re looking for? Feel free to reach out to our team.
               </p>
               <a
                 href="/contact"

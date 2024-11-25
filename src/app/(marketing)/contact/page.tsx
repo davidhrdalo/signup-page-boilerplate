@@ -40,7 +40,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Have questions about the beta? We'd love to hear from you.
+              Have questions about the beta? We&apos;d love to hear from you.
             </p>
           </div>
 
